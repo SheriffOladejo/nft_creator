@@ -1,0 +1,43 @@
+name: nft_creator
+description: An NFT creator and wallet app
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  fluttertoast: ^8.0.8
+  flutter_lints: ^2.0.0
+  carousel_slider: ^4.2.1
+  url_launcher: ^6.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+  fonts:
+    - family: solata-extrabold
+      fonts:
+        - asset: assets/fonts/solata-extrabold.ttf
+    - family: solata-bold
+      fonts:
+        - asset: assets/fonts/solata-bold.ttf
+    - family: solata-semibold
+      fonts:
+        - asset: assets/fonts/solata-semibold.ttf
+    - family: solata-medium
+      fonts:
+        - asset: assets/fonts/solata-medium.ttf
+    - family: solata-regular
+      fonts:
+        - asset: assets/fonts/solata-regular.ttf
