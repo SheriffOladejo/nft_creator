@@ -3,7 +3,7 @@ import 'package:nft_creator/adapters/dashboard_nft_adapter.dart';
 import 'package:nft_creator/adapters/news_adapter.dart';
 import 'package:nft_creator/models/news.dart';
 import 'package:nft_creator/models/nft_art.dart';
-import 'package:nft_creator/utils/hex_color.dart';
+import 'package:nft_creator/utilities/hex_color.dart';
 
 class CryptoNews extends StatefulWidget {
   const CryptoNews({Key key}) : super(key: key);

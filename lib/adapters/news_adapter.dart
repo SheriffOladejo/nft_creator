@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nft_creator/models/news.dart';
-import 'package:nft_creator/utils/hex_color.dart';
-import 'package:nft_creator/utils/methods.dart';
+import 'package:nft_creator/utilities/hex_color.dart';
+import 'package:nft_creator/utilities/methods.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsAdapter extends StatefulWidget {

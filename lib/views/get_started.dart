@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nft_creator/utils/hex_color.dart';
-import 'package:nft_creator/utils/methods.dart';
+import 'package:nft_creator/utilities/hex_color.dart';
+import 'package:nft_creator/utilities/methods.dart';
 import 'package:nft_creator/views/import_wallet.dart';
 
 class GetStarted extends StatefulWidget {

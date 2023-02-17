@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nft_creator/utils/hex_color.dart';
+import 'package:nft_creator/utilities/hex_color.dart';
 import 'package:nft_creator/views/get_started.dart';
 
 class SplashScreen extends StatefulWidget {

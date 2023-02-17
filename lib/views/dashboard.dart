@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nft_creator/adapters/dashboard_nft_adapter.dart';
 import 'package:nft_creator/adapters/nft_adapter.dart';
 import 'package:nft_creator/models/nft_art.dart';
-import 'package:nft_creator/utils/hex_color.dart';
+import 'package:nft_creator/utilities/hex_color.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key key}) : super(key: key);

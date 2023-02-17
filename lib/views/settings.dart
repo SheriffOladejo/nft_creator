@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nft_creator/utils/methods.dart';
+import 'package:nft_creator/utilities/methods.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatefulWidget {

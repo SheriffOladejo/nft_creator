@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nft_creator/models/nft_art.dart';
-import 'package:nft_creator/utils/hex_color.dart';
+import 'package:nft_creator/utilities/hex_color.dart';
 
 class DashboardNFTAdapter extends StatefulWidget {
 
