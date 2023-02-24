@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nft_creator/views/create_nft.dart';
-import 'package:nft_creator/views/home_screen.dart';
 import 'package:nft_creator/views/splash_screen.dart';
 
 void main() {
@@ -17,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen()
+      home: SplashScreen()
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:nft_creator/tictactoe/screens/welcome/components/alert_dialog.da
 import 'package:nft_creator/tictactoe/screens/welcome/components/scaffold_body.dart';
 import 'package:nft_creator/tictactoe/utilities/audio_player.dart';
 import 'package:nft_creator/tictactoe/models/settings.dart';
+import 'package:nft_creator/utilities/hex_color.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -32,7 +33,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   AppBar _buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: HexColor("#BFA8DA"),
       title: Text(
         'TIC TAC TOE',
         textAlign: TextAlign.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_creator/tictactoe/utilities/audio_player.dart';
 import 'package:nft_creator/utilities/hex_color.dart';
 import 'package:nft_creator/views/get_started.dart';
 
@@ -31,6 +32,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future init() async {
+    AudioPlayer.toggleLoop();
+    AudioPlayer.stopMusic();
     Future.delayed(const Duration(seconds: 2), () async {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const GetStarted()));
     });

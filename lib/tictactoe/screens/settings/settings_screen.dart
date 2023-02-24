@@ -37,7 +37,7 @@ class SettingsScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const SizedBox(width: 50.0, height: 10.0),
+        //const SizedBox(width: 50.0, height: 10.0),
         const Text('Avatar', style: TextStyle(fontSize: 19.0)),
         const SizedBox(width: 10.0),
         MyToggleButtons(index),

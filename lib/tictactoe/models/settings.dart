@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Settings {
-  static List<bool> audioValues = [true, true];
+  static List<bool> audioValues = [getSoundSetting(), getMusicSetting()];
   static List<String> playerRoleNames = ['Your Name', 'Opponent'];
   static List<String> playerNames = ['Player 1', 'Player 2'];
   static List playerAvatars = [0, 0];
@@ -24,4 +24,13 @@ class Settings {
     playerNames[0] = controllerP1.text;
     playerNames[1] = controllerP2.text;
   }
+
+  static bool getSoundSetting() {
+    return true;
+  }
+
+  static bool getMusicSetting() {
+    return true;
+  }
+
 }

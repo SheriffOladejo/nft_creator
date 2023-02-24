@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:nft_creator/models/nft_art.dart';
 import 'package:nft_creator/utilities/hex_color.dart';
@@ -7,13 +9,17 @@ class FilterAdapter extends StatefulWidget {
 
   Function callback;
   ColorFilter filter;
+  int filter_index;
   String filter_name;
   NFTArt art;
+  String from;
   FilterAdapter({
     this.filter,
+    this.filter_index,
     this.filter_name,
     this.art,
     this.callback,
+    this.from,
   });
 
   @override
@@ -27,7 +33,7 @@ class _FilterAdapterState extends State<FilterAdapter> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        widget.callback(widget.filter);
+        widget.callback(widget.filter, widget.filter_index);
       },
       child: Container(
         margin: const EdgeInsets.all(5),
@@ -35,7 +41,7 @@ class _FilterAdapterState extends State<FilterAdapter> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(widget.filter_name, style: const TextStyle(
-              color: Colors.black,
+              color: Colors.white,
               fontSize: 10,
               fontFamily: 'solata-bold',
             ),),
@@ -50,7 +56,9 @@ class _FilterAdapterState extends State<FilterAdapter> {
               alignment: Alignment.bottomCenter,
               child: OnImageMatrixWidget(
                   colorFilter: widget.filter,
-                  child: Image.asset(widget.art.image, fit: BoxFit.fitHeight, height: 135)
+                  child: widget.from == "user" ?
+                  Image.file(File(widget.art.image), height: 325, width: 325, fit: BoxFit.fitHeight,) :
+                  Image.asset(widget.art.image, fit: BoxFit.fitHeight, height: 325, width: 325,)
               ),
             )
           ],

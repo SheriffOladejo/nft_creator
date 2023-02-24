@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_creator/tictactoe/utilities/audio_player.dart';
 import 'package:nft_creator/utilities/methods.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,6 +18,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         title: const Text(
             "Settings",
@@ -61,7 +63,7 @@ class _SettingsState extends State<Settings> {
             ),
             Container(height: 3,),
             const Divider(
-              color: Colors.black,
+              color: Colors.white,
             ),
             Container(height: 3,),
             GestureDetector(
@@ -96,6 +98,13 @@ class _SettingsState extends State<Settings> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    AudioPlayer.toggleLoop();
+    AudioPlayer.stopMusic();
+    super.initState();
   }
 
 }

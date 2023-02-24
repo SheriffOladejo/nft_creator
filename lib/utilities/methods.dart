@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:nft_creator/utilities/hex_color.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+Widget loadingPage(){
+  return const Center(
+    child: CircularProgressIndicator(
+
+    ),
+  );
+}
+
 Route slideLeft(Widget next) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => next,

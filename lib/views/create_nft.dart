@@ -1,7 +1,16 @@
+import 'dart:io';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nft_creator/adapters/nft_adapter.dart';
 import 'package:nft_creator/models/nft_art.dart';
+import 'package:nft_creator/tictactoe/utilities/audio_player.dart';
+import 'package:nft_creator/utilities/hex_color.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:nft_creator/views/art_board.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 class CreateNFT extends StatefulWidget {
   const CreateNFT({Key key}) : super(key: key);
@@ -16,9 +25,40 @@ class _CreateNFTState extends State<CreateNFT> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: SpeedDial(
+          overlayOpacity: 0.0,
+          backgroundColor: HexColor("#8051B4"),
+          children: [
+            SpeedDialChild(
+              child: const Icon(Icons.camera_alt),
+              label: 'Camera',
+              backgroundColor: Colors.white,
+              onTap: () async {
+                final ImagePicker _picker = ImagePicker();
+                final XFile image = await _picker.pickImage(source: ImageSource.camera);
+                print("create_nft.select_image selected image path: ${image.path}");
+                File file = File(image.path);
+                openArtBoard(file, context);
+              },
+            ),
+            SpeedDialChild(
+              child: const Icon(Icons.image),
+              label: 'Gallery',
+              backgroundColor: Colors.white,
+              onTap: () async {
+                final ImagePicker _picker = ImagePicker();
+                final XFile image = await _picker.pickImage(source: ImageSource.gallery);
+                print("create_nft.select_image selected image path: ${image.path}");
+                File file = File(image.path);
+                openArtBoard(file, context);
+              },
+            ),
+          ],
+          child: const Icon(Icons.add, color: Colors.white,)),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
         title: const Text(
             "Create an NFT from scratch or\nchoose from the templates",
             style: TextStyle(
@@ -86,6 +126,25 @@ class _CreateNFTState extends State<CreateNFT> {
         ),
       ),
     );
+  }
+
+  void openArtBoard(File image, BuildContext context) async {
+    if (image == null) return;
+
+    Directory dir = await getApplicationDocumentsDirectory();
+    String path = dir.path;
+
+    DateTime date = DateTime.now();
+    String datetime = DateFormat("dd-MM-yyyy HH:mm:ss").format(date);
+
+    await image.copy('$path/$datetime.png');
+    String image_path = '$path/$datetime.png';
+
+    NFTArt art = NFTArt(
+      image: image_path,
+      color: "#E88BD4",
+    );
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ArtBoard(art: art, from: "user", isUpdating: false,)));
   }
 
   List<Widget> tributeNfts() {
@@ -176,6 +235,13 @@ class _CreateNFTState extends State<CreateNFT> {
         ),
       ),
     ];
+  }
+
+  @override
+  void initState() {
+    AudioPlayer.toggleLoop();
+    AudioPlayer.stopMusic();
+    super.initState();
   }
 
 }

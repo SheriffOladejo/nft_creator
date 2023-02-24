@@ -21,7 +21,7 @@ class _NFTAdapterState extends State<NFTAdapter> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ArtBoard(art: widget.art,)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ArtBoard(art: widget.art, from: "app", isUpdating: false,)));
       },
       child: Container(
         margin: const EdgeInsets.only(left: 10, right: 10),

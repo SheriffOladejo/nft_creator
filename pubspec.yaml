@@ -24,6 +24,16 @@ dependencies:
   assets_audio_player: ^3.0.3+6
   rflutter_alert: ^2.0.4
   lottie: ^1.2.0
+  replay_bloc: ^0.2.3
+  flutter_bloc: ^8.1.2
+  image_picker: ^0.8.6+2
+  flutter_speed_dial: ^6.2.0
+  path_provider: ^2.0.12
+  intl: ^0.18.0
+  sqflite: ^2.2.2
+  image_gallery_saver: ^1.7.1
+  screenshot: ^1.3.0
+  telegram: ^0.0.3
 
 dev_dependencies:
   flutter_test:
@@ -33,6 +43,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/audios/
+    - assets/lottie/
   fonts:
     - family: solata-extrabold
       fonts:
@@ -49,3 +61,12 @@ flutter:
     - family: solata-regular
       fonts:
         - asset: assets/fonts/solata-regular.ttf
+    - family: Carter
+      fonts:
+        - asset: assets/fonts/CarterOne-Regular.ttf
+    - family: Coiny-Regular
+      fonts:
+        - asset: assets/fonts/Coiny-Regular.ttf
+    - family: Paytone
+      fonts:
+        - asset: assets/fonts/PaytoneOne-Regular.ttf

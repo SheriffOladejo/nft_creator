@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nft_creator/tictactoe/screens/welcome/welcome_screen.dart';
 import 'package:nft_creator/utilities/hex_color.dart';
 import 'package:nft_creator/views/create_nft.dart';
 import 'package:nft_creator/views/crypto_news.dart';
@@ -16,12 +17,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  static const List<Widget> widgetOptions = [
-    DashBoard(),
-    CryptoNews(),
-    CreateNFT(),
-    Game(),
-    Settings()
+  static List<Widget> widgetOptions = [
+    const DashBoard(),
+    const CryptoNews(),
+    const CreateNFT(),
+    WelcomeScreen(),
+    const Settings()
   ];
 
   int selectedIndex = 0;
