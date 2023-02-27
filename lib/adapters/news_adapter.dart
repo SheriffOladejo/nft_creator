@@ -30,10 +30,9 @@ class _NewsAdapterState extends State<NewsAdapter> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
+          Image.network(
             widget.news.image,
             width: MediaQuery.of(context).size.width,
-            height: 280,
           ),
           Container(height: 5,),
           Text(widget.news.title, style: const TextStyle(
@@ -42,7 +41,7 @@ class _NewsAdapterState extends State<NewsAdapter> {
             fontSize: 16
           ),),
           Container(height: 5,),
-          Text("${widget.news.text.substring(0, 120)}...", style: const TextStyle(
+          Text(widget.news.text, style: const TextStyle(
               color: Colors.black,
               fontFamily: 'solata-regular',
               fontSize: 12

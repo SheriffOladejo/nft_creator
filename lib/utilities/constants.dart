@@ -38,4 +38,6 @@ class Constants {
     'technicolor',
     'vintage',
   ];
+
+  static const String newsai_key = "6b24784a7c07473b9b06baf6a95967a6";
 }

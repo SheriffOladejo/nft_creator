@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:nft_creator/adapters/dashboard_nft_adapter.dart';
+import 'package:http/http.dart' as http;
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:nft_creator/adapters/news_adapter.dart';
 import 'package:nft_creator/models/news.dart';
-import 'package:nft_creator/models/nft_art.dart';
 import 'package:nft_creator/tictactoe/utilities/audio_player.dart';
-import 'package:nft_creator/utilities/hex_color.dart';
+import 'package:nft_creator/utilities/methods.dart';
 
 class CryptoNews extends StatefulWidget {
   const CryptoNews({Key key}) : super(key: key);
@@ -15,10 +17,86 @@ class CryptoNews extends StatefulWidget {
 
 class _CryptoNewsState extends State<CryptoNews> {
 
+  static const page_size = 20;
+
+  final PagingController<int, News> paging_controller = PagingController(firstPageKey: 1);
+
   List<News> news_list = [];
+
+  bool is_loading = false;
 
   @override
   Widget build(BuildContext context) {
+    if (is_loading) {
+      return loadingPage();
+    }
+    return mainPage();
+  }
+
+  Future<void> getNews(int page_key) async {
+
+    try {
+      List<News> newItems = [];
+
+      var params = {
+        "section": "general",
+        "items": "$page_size",
+        "page": "$page_key",
+        "token": "ehknk7n0mbedffhy3zuh8uo77s8jsuzn6jjhngnb"
+      };
+      var url = Uri.http("cryptonews-api.com", "api/v1/category", params);
+      var response = await http.get(url);
+      final json = jsonDecode(response.body.toString());
+      List<dynamic> data = json["data"];
+      for (int i = 0; i < data.length; i++) {
+        List<String> list = data[i]["date"].toString().split(" ");
+        String date = "";
+        for (int i = 0; i < 4; i++) {
+          date += "${list[i]} ";
+        }
+        newItems.add(News(
+              image: data[i]["image_url"],
+              title: data[i]["title"],
+              text: data[i]["text"],
+              source_name: data[i]["source_name"],
+              url: data[i]["news_url"],
+              date: date,
+            ));
+      }
+
+      news_list.addAll(newItems);
+
+      final isLastPage = newItems.length < page_size;
+      if (isLastPage) {
+        paging_controller.appendLastPage(newItems);
+      } else {
+        final nextPageKey = page_key + newItems.length;
+        paging_controller.appendPage(newItems, nextPageKey);
+      }
+    } catch (error) {
+      paging_controller.error = error;
+    }
+  }
+
+  void init() async {
+    AudioPlayer.toggleLoop();
+    AudioPlayer.stopMusic();
+    paging_controller.addPageRequestListener((pageKey) {
+      getNews(pageKey);
+    });
+    await getNews(1);
+    setState(() {
+
+    });
+  }
+
+  @override
+  void initState() {
+    init();
+    super.initState();
+  }
+
+  Widget mainPage() {
     return Container(
       margin: const EdgeInsets.only(top: 30),
       width: MediaQuery.of(context).size.width,
@@ -33,46 +111,17 @@ class _CryptoNewsState extends State<CryptoNews> {
                 fontFamily: 'solata-bold'),
             ),
           ),
-          Expanded(child: ListView.builder(
-            shrinkWrap: true,
-            controller: ScrollController(),
-            itemBuilder: (context, index) {
-              News article = news_list[index];
-              return NewsAdapter(news: article);
-            },
-            itemCount: news_list.length,
+          Expanded(child: PagedListView<int, News>(
+            pagingController: paging_controller,
+            builderDelegate: PagedChildBuilderDelegate<News>(
+              itemBuilder: (context, item, index) => NewsAdapter(
+                news: news_list[index],
+              ),
+            ),
           )),
         ],
       ),
     );
-  }
-
-  void init() {
-    AudioPlayer.toggleLoop();
-    AudioPlayer.stopMusic();
-    for (int i = 0; i <= 5; i++) {
-      news_list.add(
-        News(
-          image: "assets/images/news_sample.png",
-          title: "Bank of China ex-advisor calls Beijing to reconsider crypto ban",
-          text: "Huang Yiping, a former PBoC monetary policy adviser,"
-              " believes that China should consider whether the"
-              " ban on crypto trading is sustainable.",
-          source_name: "FTX Street",
-          url: "https://www.google.com",
-          date: "13 Feb, 2023"
-        )
-      );
-    }
-    setState(() {
-
-    });
-  }
-
-  @override
-  void initState() {
-    init();
-    super.initState();
   }
 
 }

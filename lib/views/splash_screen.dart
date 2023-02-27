@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:nft_creator/models/wallet.dart';
 import 'package:nft_creator/tictactoe/utilities/audio_player.dart';
+import 'package:nft_creator/utilities/db_helper.dart';
 import 'package:nft_creator/utilities/hex_color.dart';
 import 'package:nft_creator/views/get_started.dart';
+import 'package:nft_creator/views/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -34,9 +37,19 @@ class _SplashScreenState extends State<SplashScreen> {
   Future init() async {
     AudioPlayer.toggleLoop();
     AudioPlayer.stopMusic();
-    Future.delayed(const Duration(seconds: 2), () async {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const GetStarted()));
-    });
+
+    final db_helper = DbHelper();
+    final List<Wallet> list = await db_helper.getWallets();
+    if (list.isEmpty) {
+      Future.delayed(const Duration(seconds: 2), () async {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const GetStarted()));
+      });
+    }
+    else {
+      Future.delayed(const Duration(seconds: 2), () async {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+      });
+    }
   }
 
   @override

