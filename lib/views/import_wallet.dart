@@ -40,8 +40,10 @@ class _ImportWalletState extends State<ImportWallet> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
+        centerTitle: false,
+        leadingWidth: 0,
         title: const Text(
-            "Import a wallet to hold \nyour NFTs",
+            "Create a wallet to hold your NFTs",
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
@@ -395,7 +397,6 @@ class _ImportWalletState extends State<ImportWallet> {
     List<Widget> field_list = [];
 
     for(int i = 0; i < 12; i++) {
-      twelve_controller_list[i].text = i.toString();
       field_list.add(
           Container(
             padding: i % 2 == 0 ? const EdgeInsets.fromLTRB(0, 5, 5, 5) : const EdgeInsets.fromLTRB(5, 5, 0, 5),

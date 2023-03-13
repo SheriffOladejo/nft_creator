@@ -240,7 +240,7 @@ class _ArtBoardState extends State<ArtBoard> {
                         borderRadius: const BorderRadius.all(Radius.circular(5))
                       ),
                       height: 50,
-                      width: 40,
+                      width: 50,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -267,7 +267,7 @@ class _ArtBoardState extends State<ArtBoard> {
                           borderRadius: const BorderRadius.all(Radius.circular(5))
                       ),
                       height: 50,
-                      width: 40,
+                      width: 50,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -294,7 +294,7 @@ class _ArtBoardState extends State<ArtBoard> {
                           borderRadius: const BorderRadius.all(Radius.circular(5))
                       ),
                       height: 50,
-                      width: 40,
+                      width: 50,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -321,7 +321,7 @@ class _ArtBoardState extends State<ArtBoard> {
                           borderRadius: const BorderRadius.all(Radius.circular(5))
                       ),
                       height: 50,
-                      width: 40,
+                      width: 50,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -348,7 +348,7 @@ class _ArtBoardState extends State<ArtBoard> {
                           borderRadius: const BorderRadius.all(Radius.circular(5))
                       ),
                       height: 50,
-                      width: 40,
+                      width: 50,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -375,7 +375,7 @@ class _ArtBoardState extends State<ArtBoard> {
                           borderRadius: const BorderRadius.all(Radius.circular(5))
                       ),
                       height: 50,
-                      width: 40,
+                      width: 50,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

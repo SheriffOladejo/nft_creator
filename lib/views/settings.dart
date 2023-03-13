@@ -38,7 +38,7 @@ class _SettingsState extends State<Settings> {
           children: [
             GestureDetector(
               onTap: () async {
-                var url = "https://lukka.tech/privacy-policy/";
+                var url = "https://docs.google.com/document/d/e/2PACX-1vSJW_wy46dVo8Trpr_-u4zH8gcU95hu1XKeLSJ6SzdC_Gh7nuwYneels8tKkNDIk36FB4nUOlmjHKu8/pub";
                 if(await canLaunch(url)){
                   await launch(url);
                 }
@@ -68,7 +68,7 @@ class _SettingsState extends State<Settings> {
             Container(height: 3,),
             GestureDetector(
               onTap: () async {
-                var url = "https://lukka.tech/terms-of-use/";
+                var url = "https://docs.google.com/document/d/e/2PACX-1vSxrzCTwZK95SYQWeu3mbJW5EDDBAVUmsfOunmJPbmqBF1aSU-9xJG7zi6q4gl25ECQDooZ6I3UQcqP/pub";
                 if(await canLaunch(url)){
                   await launch(url);
                 }

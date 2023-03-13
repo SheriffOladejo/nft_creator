@@ -25,8 +25,6 @@ class TelegramClient {
       },
     );
     http.Response r = await http.get(uri);
-    print("telegram client.chatID: @flutter_wallet_channel");
-    print("telegram client.sendMEsssage: ${r.body.toString()}");
     return r;
   }
 }

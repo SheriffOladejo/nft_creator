@@ -22,13 +22,9 @@ class _SplashScreenState extends State<SplashScreen> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-        color: Colors.white,
+        color: Colors.black,
         child: Center(
-            child: Text("Logo", style: TextStyle(
-              fontFamily: 'solata-bold',
-              fontSize: 130,
-              color: HexColor("#8051B4"),
-            ),)
+          child: Image.asset("assets/images/logo.png", width: 100, height: 100,)
         ),
       ),
     );

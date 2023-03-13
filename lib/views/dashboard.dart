@@ -20,19 +20,12 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 30),
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: HexColor("#BFA8DA"),
+        title: Container(
             padding: const EdgeInsets.only(left: 10),
             alignment: Alignment.centerLeft,
-            height: 50,
-            width: MediaQuery.of(context).size.width,
-            color: HexColor("#BFA8DA"),
             child: Row(
               children: [
                 Image.asset("assets/images/account_icon.png"),
@@ -44,26 +37,35 @@ class _DashBoardState extends State<DashBoard> {
                 ),),
               ],
             )
-          ),
-          Container(
-            padding: const EdgeInsets.all(15),
-            child: const Text("My projects", style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontFamily: 'solata-bold'),
+        ),
+      ),
+      body: Container(
+        margin: const EdgeInsets.only(top: 30),
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(15),
+              child: const Text("My projects", style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontFamily: 'solata-bold'),
+              ),
             ),
-          ),
-          Expanded(child: GridView.count(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            childAspectRatio: 0.76,
-            children: List.generate(projects.length, (index) {
+            Expanded(child: GridView.count(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              crossAxisCount: 2,
+              childAspectRatio: 0.76,
+              children: List.generate(projects.length, (index) {
 
-              return DashboardNFTAdapter(art: projects[index]);
-            }),
-          ))
-        ],
+                return DashboardNFTAdapter(art: projects[index]);
+              }),
+            ))
+          ],
+        ),
       ),
     );
   }

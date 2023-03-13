@@ -8,6 +8,7 @@ import 'package:nft_creator/models/nft_art.dart';
 import 'package:nft_creator/tictactoe/utilities/audio_player.dart';
 import 'package:nft_creator/utilities/hex_color.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:nft_creator/utilities/methods.dart';
 import 'package:nft_creator/views/art_board.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -36,7 +37,6 @@ class _CreateNFTState extends State<CreateNFT> {
               onTap: () async {
                 final ImagePicker _picker = ImagePicker();
                 final XFile image = await _picker.pickImage(source: ImageSource.camera);
-                print("create_nft.select_image selected image path: ${image.path}");
                 File file = File(image.path);
                 openArtBoard(file, context);
               },
@@ -48,8 +48,8 @@ class _CreateNFTState extends State<CreateNFT> {
               onTap: () async {
                 final ImagePicker _picker = ImagePicker();
                 final XFile image = await _picker.pickImage(source: ImageSource.gallery);
-                print("create_nft.select_image selected image path: ${image.path}");
                 File file = File(image.path);
+                print("create_nft.build selectImage: path is ${file.path}");
                 openArtBoard(file, context);
               },
             ),
@@ -58,9 +58,10 @@ class _CreateNFTState extends State<CreateNFT> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
+        centerTitle: false,
+        leadingWidth: 0,
         title: const Text(
-            "Create an NFT from scratch or\nchoose from the templates",
+            "Create an NFT from scratch or choose\nfrom the templates",
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
@@ -131,8 +132,7 @@ class _CreateNFTState extends State<CreateNFT> {
   void openArtBoard(File image, BuildContext context) async {
     if (image == null) return;
 
-    Directory dir = await getApplicationDocumentsDirectory();
-    String path = dir.path;
+    String path = await getStorageDirectory();
 
     DateTime date = DateTime.now();
     String datetime = DateFormat("dd-MM-yyyy HH:mm:ss").format(date);

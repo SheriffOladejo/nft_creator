@@ -58,6 +58,7 @@ class _DashboardNFTAdapterState extends State<DashboardNFTAdapter> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => art_board.ArtBoard(art: widget.art, from: widget.art.from, isUpdating: true,)));
                 },
                 child: Container(
+                  margin: const EdgeInsets.fromLTRB(15, 0, 0, 0),
                   height: 130,
                   alignment: Alignment.topRight,
                   width: 140,

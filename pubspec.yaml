@@ -3,7 +3,7 @@ description: An NFT creator and wallet app
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 1.2.0+3
 
 environment:
   sdk: '>=2.7.0 <3.0.0'
@@ -36,10 +36,16 @@ dependencies:
   telegram: ^0.0.3
   http: ^0.13.5
   infinite_scroll_pagination: ^3.2.0
+  flutter_launcher_icons: ^0.12.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
 
 flutter:
   uses-material-design: true

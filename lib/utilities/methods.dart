@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:nft_creator/utilities/hex_color.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:path_provider/path_provider.dart';
 
 Widget loadingPage(){
   return const Center(
@@ -38,6 +41,30 @@ Future showToast(String message){
       textColor: Colors.black,
       fontSize: 16.0
   );
+}
+
+Future<String> getStorageDirectory() async {
+  if (Platform.isAndroid) {
+
+    String dir = (await getExternalStorageDirectory()).path;
+
+    File directory = File(dir);
+    bool exists = await directory.exists();
+    if (!exists) {
+      directory.create();
+    }
+    return dir;  // OR return "/storage/emulated/0/Download";
+  }
+  else {
+    String dir = (await getApplicationDocumentsDirectory()).path;
+
+    File directory = File(dir);
+    bool exists = await directory.exists();
+    if (!exists) {
+      directory.create();
+    }
+    return dir;  // O
+  }
 }
 
 OutlineInputBorder focusedBorder() {

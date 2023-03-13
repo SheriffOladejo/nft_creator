@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:nft_creator/models/nft_art.dart';
 import 'package:nft_creator/models/wallet.dart';
 import 'package:nft_creator/utilities/methods.dart';
@@ -70,13 +72,19 @@ class DbHelper {
   // Art and NFT operations
 
   Future<bool> saveArt(NFTArt art) async {
+    // if (art.from == 'user') {
+    //   File file = File(art.image);
+    //   var newFile = await file.writeAsBytes(/* image bytes*/);
+    //   await newFile.create();
+    // }
+
     Database db = await database;
     String query = "insert into $art_table ($col_filter_index, $col_image, $col_color, "
         "$col_saturation, $col_exposure, $col_visibility, $col_contrast, $col_source) values ("
         "'${art.filter_index}', '${art.image}', '${art.color}', '${art.saturation}', "
         "'${art.exposure}', '${art.visibility}', '${art.contrast}', '${art.from}')";
     try {
-      print("db_helper.saveArt query is $query");
+      print("db_helper.saveArt query: $query");
       await db.execute(query);
       return true;
     }
